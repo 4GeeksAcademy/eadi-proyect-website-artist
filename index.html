@@ -14,12 +14,21 @@
     }
     </script>
     <meta name="keywords" content="Evelyn Barboza, arte uruguayo, pintura acrílica, talleres de arte, cuadros personalizados, Uruguay">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="site-header">
         <nav class="site-nav" aria-label="Navegación principal">
-            <ul>
+            <a class="brand-initials" href="#inicio" aria-label="Volver al inicio">EB</a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Abrir o cerrar menú de navegación">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul id="primary-menu">
                 <li><a href="#galeria">Galería</a></li>
                 <li><a href="#sobre-mi">Sobre mí</a></li>
                 <li><a href="#trayectoria">Trayectoria</a></li>
@@ -44,7 +53,7 @@
     <main>
         <section id="galeria" class="section full-height" aria-labelledby="galeria-title">
             <div class="section-header">
-                <h2 id="galeria-title">Galería</h2>
+                <h2 id="galeria-title">Galería</h2> 
                 <p>Obras recientes de Evelyn.</p>
             </div>
             <div class="grid-artwork">
@@ -101,7 +110,7 @@
                         <figure class="polaroid polaroid-left">
                             <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Pinceles de arte">
                         </figure>
-                        <figure class="polaroid polaroid-top-right">
+                        <figure class="polaroid polaroid-right">
                             <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Acrílicos de colores">
                         </figure>
                     </div>
@@ -172,6 +181,7 @@
                     <figure>
                             <img src="https://images.unsplash.com/photo-1752649936912-fe4c451a1d65?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Evelyn mirando la obra que pinta su alumna sobre lienzo en una de las clases particulares que dicta.">
                     </figure>
+                    <button class="button service-cta button-agenda" type="button" id="open-agenda">Agendar clase</button>
                 </article>
                 <article class="service-card">
                     <h3>Presentaciones y ferias</h3>
@@ -182,6 +192,17 @@
                 </article>
             </div>
         </section>
+
+        <div id="agenda-overlay" class="agenda-overlay" aria-hidden="true">
+            <div class="agenda-modal" role="dialog" aria-modal="true" aria-labelledby="agenda-title">
+                <button id="close-agenda" class="agenda-close" type="button" aria-label="Cerrar agenda">x</button>
+                <h3 id="agenda-title">Agendar clase</h3>
+                <p>Selecciona una fecha para coordinar tu clase de arte.</p>
+                <label for="agenda-date">Fecha de clase</label>
+                <input id="agenda-date" type="date" required>
+                <button id="confirm-agenda" class="button agenda-confirm" type="button">Confirmar agenda</button>
+            </div>
+        </div>
 
         <section id="eventos" class="section full-height" aria-labelledby="eventos-title">
             <div class="section-header">
@@ -196,6 +217,7 @@
                         <li>Pincel seco para texturas suaves.</li>
                         <li>Stippling para crear profundidad con puntos de color.</li>
                         <li>Scumbling para lograr efectos de luz y sombra.</li>
+                    </ul>
                     <p>Lugar de dictado: Museo Joaquín Torres García</p>
                     <p>Fecha: 15/08/2026</p>
                 </article>
@@ -261,14 +283,230 @@
                     </div>
                 </details>
             </div>
+        </section>
+
+        <section id="contacto" class="section full-height" aria-labelledby="contacto-title">
+            <div class="section-header">
+                <h2 id="contacto-title">Contacto</h2>
+                <p>Contame tu idea y te respondo por correo. Tambien podes escribirme por WhatsApp o seguir mi trabajo en Instagram.</p>
+            </div>
+            <div class="contact-grid">
+                <form class="contact-form" action="mailto:evelynbarbozaart@gmail.com" method="post" enctype="text/plain">
+                    <label for="nombre">Nombre</label>
+                    <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required>
+
+                    <label for="correo">Correo electronico</label>
+                    <input id="correo" name="correo" type="email" placeholder="tu@email.com" required>
+
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" rows="6" placeholder="Quiero consultar por una obra personalizada..." required></textarea>
+
+                    <button class="button" type="submit">Enviar por correo</button>
+                </form>
+
+                <aside class="contact-note" aria-label="Canales de contacto directo">
+                    <p>Si preferis una respuesta rapida, escribime directo por WhatsApp. En Instagram comparto nuevas obras, procesos y eventos.</p>
+                    <div class="contact-links">
+                        <a class="social-link" href="https://wa.me/59899999999?text=Hola%20Evelyn,%20quiero%20consultar%20por%20una%20obra%20personalizada" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+                            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path d="M20.5 3.5A11 11 0 0 0 3.23 16.78L2 22l5.36-1.2A11 11 0 1 0 20.5 3.5Zm-8.45 17a8.8 8.8 0 0 1-4.49-1.23l-.32-.2-3.18.71.74-3.1-.22-.32a8.79 8.79 0 1 1 7.47 4.14Zm4.83-6.42c-.26-.13-1.55-.76-1.79-.85-.24-.09-.41-.13-.58.14-.17.26-.67.85-.82 1.02-.15.17-.31.2-.57.07-.26-.13-1.1-.4-2.09-1.27-.77-.68-1.29-1.52-1.44-1.78-.15-.26-.02-.4.11-.53.12-.12.26-.31.39-.46.13-.15.17-.26.26-.43.09-.17.04-.33-.02-.46-.07-.13-.58-1.4-.8-1.92-.21-.5-.43-.43-.58-.44h-.5c-.17 0-.46.07-.7.33-.24.26-.92.9-.92 2.2s.94 2.56 1.07 2.74c.13.17 1.84 2.8 4.46 3.93.62.27 1.11.43 1.49.55.63.2 1.2.17 1.66.1.51-.08 1.55-.63 1.77-1.24.22-.61.22-1.13.15-1.24-.06-.11-.24-.18-.5-.31Z"/>
+                            </svg>
+                            <span>WhatsApp</span>
+                        </a>
+                        <a class="social-link" href="https://www.instagram.com/evelynbarbozaart" target="_blank" rel="noopener" aria-label="Ver Instagram">
+                            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 1.8A3.7 3.7 0 0 0 3.8 7.5v9a3.7 3.7 0 0 0 3.7 3.7h9a3.7 3.7 0 0 0 3.7-3.7v-9a3.7 3.7 0 0 0-3.7-3.7h-9Zm9.45 1.35a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Z"/>
+                            </svg>
+                            <span>Instagram</span>
+                        </a>
+                    </div>
+                </aside>
+            </div>
+        </section>
     </main>
 
-    <footer class="site-footer" id="contacto">
+    <footer class="site-footer">
         <p>&copy; 2026 Evelyn Barboza. Arte y talleres en Uruguay.</p>
         <a href="https://www.instagram.com/evelynbarbozaart" target="_blank" rel="noopener">Instagram</a> |
         <a href="https://wa.me/59899999999?text=Hola%20Evelyn,%20quiero%20consultar%20por%20una%20  obra%20personalizada" target="_blank" rel="noopener">WhatsApp</a> |
         <a href="mailto:evelynbarbozaart@gmail.com">Correo Electrónico</a>
         <address>Montevideo, Uruguay</address>
     </footer>
+    <button id="back-to-top" class="back-to-top" type="button" aria-label="Volver al inicio">↑</button>
+    <script>
+        (function () {
+            var nav = document.querySelector('.site-nav');
+            var toggle = document.querySelector('.menu-toggle');
+            var menu = document.getElementById('primary-menu');
+            var brandLink = document.querySelector('.brand-initials');
+            var faqItems = document.querySelectorAll('.faq-list .faq-item');
+            var backToTop = document.getElementById('back-to-top');
+            var openAgenda = document.getElementById('open-agenda');
+            var agendaOverlay = document.getElementById('agenda-overlay');
+            var closeAgenda = document.getElementById('close-agenda');
+            var agendaDate = document.getElementById('agenda-date');
+            var confirmAgenda = document.getElementById('confirm-agenda');
+            var desktopQuery = window.matchMedia('(min-width: 981px)');
+
+            if (!nav || !toggle || !menu) {
+                return;
+            }
+
+            function closeMenu() {
+                nav.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+
+            function syncDesktopState(event) {
+                if (event.matches) {
+                    nav.classList.add('is-desktop');
+                    closeMenu();
+                } else {
+                    nav.classList.remove('is-desktop');
+                }
+            }
+
+            toggle.addEventListener('click', function () {
+                var isOpen = nav.classList.toggle('is-open');
+                toggle.setAttribute('aria-expanded', String(isOpen));
+            });
+
+            menu.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    if (!nav.classList.contains('is-desktop')) {
+                        closeMenu();
+                    }
+                });
+            });
+
+            if (brandLink) {
+                brandLink.addEventListener('click', function () {
+                    if (!nav.classList.contains('is-desktop')) {
+                        closeMenu();
+                    }
+                });
+            }
+
+            faqItems.forEach(function (item) {
+                item.addEventListener('toggle', function () {
+                    if (!item.open) {
+                        return;
+                    }
+
+                    faqItems.forEach(function (other) {
+                        if (other !== item) {
+                            other.open = false;
+                        }
+                    });
+                });
+            });
+
+            function syncBackToTopVisibility() {
+                if (!backToTop) {
+                    return;
+                }
+
+                if (window.scrollY > 280) {
+                    backToTop.classList.add('is-visible');
+                } else {
+                    backToTop.classList.remove('is-visible');
+                }
+            }
+
+            function syncNavTransparency() {
+                if (window.scrollY > 12) {
+                    nav.classList.add('is-scrolled');
+                } else {
+                    nav.classList.remove('is-scrolled');
+                }
+            }
+
+            if (backToTop) {
+                backToTop.addEventListener('click', function () {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            function closeAgendaModal() {
+                if (!agendaOverlay) {
+                    return;
+                }
+
+                agendaOverlay.classList.remove('is-open');
+                agendaOverlay.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('modal-open');
+            }
+
+            function openAgendaModal() {
+                if (!agendaOverlay) {
+                    return;
+                }
+
+                agendaOverlay.classList.add('is-open');
+                agendaOverlay.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('modal-open');
+                if (agendaDate) {
+                    agendaDate.focus();
+                }
+            }
+
+            if (agendaDate) {
+                agendaDate.min = new Date().toISOString().split('T')[0];
+            }
+
+            if (openAgenda) {
+                openAgenda.addEventListener('click', openAgendaModal);
+            }
+
+            if (closeAgenda) {
+                closeAgenda.addEventListener('click', closeAgendaModal);
+            }
+
+            if (agendaOverlay) {
+                agendaOverlay.addEventListener('click', function (event) {
+                    if (event.target === agendaOverlay) {
+                        closeAgendaModal();
+                    }
+                });
+            }
+
+            if (confirmAgenda) {
+                confirmAgenda.addEventListener('click', function () {
+                    if (!agendaDate || !agendaDate.value) {
+                        if (agendaDate) {
+                            agendaDate.reportValidity();
+                        }
+                        return;
+                    }
+
+                    closeAgendaModal();
+                });
+            }
+
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape') {
+                    closeAgendaModal();
+                }
+            });
+
+            document.addEventListener('click', function (event) {
+                if (!nav.contains(event.target) && !nav.classList.contains('is-desktop')) {
+                    closeMenu();
+                }
+            });
+
+            syncDesktopState(desktopQuery);
+            syncBackToTopVisibility();
+            syncNavTransparency();
+            desktopQuery.addEventListener('change', syncDesktopState);
+            window.addEventListener('scroll', function () {
+                syncBackToTopVisibility();
+                syncNavTransparency();
+            }, { passive: true });
+        })();
+    </script>
 </body>
 </html>
