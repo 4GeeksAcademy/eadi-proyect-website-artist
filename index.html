@@ -4,15 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi mundo en el dibujo | Evelyn Barboza</title>
-    <script type="application/ld+json">{
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Evelyn Barboza",
-    "birthPlace": "Montevideo, Uruguay",
-    "birthDate": "15/11/1993",
-    "description": "Evelyn Barboza, artista plástica uruguaya, presenta su obra, talleres y encargos personalizados.",
-    }
-    </script>
     <meta name="keywords" content="Evelyn Barboza, arte uruguayo, pintura acrílica, talleres de arte, cuadros personalizados, Uruguay">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,11 +14,12 @@
     <header class="site-header">
         <nav class="site-nav" aria-label="Navegación principal">
             <a class="brand-initials" href="#inicio" aria-label="Volver al inicio">EB</a>
-            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Abrir o cerrar menú de navegación">
+            <input class="menu-toggle-checkbox" type="checkbox" id="menu-toggle-checkbox" aria-hidden="true">
+            <label class="menu-toggle" for="menu-toggle-checkbox" aria-label="Abrir o cerrar menú de navegación">
                 <span></span>
                 <span></span>
                 <span></span>
-            </button>
+            </label>
             <ul id="primary-menu">
                 <li><a href="#galeria">Galería</a></li>
                 <li><a href="#sobre-mi">Sobre mí</a></li>
@@ -84,7 +76,10 @@
             </div>
         </section>
 
-        <section id="sobre-mi" class="section full-height" aria-labelledby="sobre-mi-title">
+        <section id="sobre-mi" class="section full-height" aria-labelledby="sobre-mi-title" itemscope itemtype="https://schema.org/Person">
+            <meta itemprop="name" content="Evelyn Barboza">
+            <meta itemprop="birthDate" content="1993-11-15">
+            <meta itemprop="description" content="Evelyn Barboza, artista plástica uruguaya, presenta su obra, talleres y encargos personalizados.">
             <div class="section-header">
                 <h2 id="sobre-mi-title">Sobre mí</h2>
             </div>
@@ -94,7 +89,7 @@
                         <img src="https://images.unsplash.com/photo-1752649936105-0b02f795ea41?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Evelyn Barboza pintando sobre lienzo" class="artist-image">
                         <figcaption>Evelyn Barboza</figcaption>
                     </figure>
-                    <p>Nacida el 15/11/1993 en Uruguay.</p>
+                    <p>Nacida el <time datetime="1993-11-15" itemprop="birthDate">15/11/1993</time> en <span itemprop="birthPlace">Montevideo, Uruguay</span>.</p>
                     <p>Evelyn es una Artista plástica autodidacta desde 2010, su gran pasión por el arte la acompaña hace más de 16 años lo que le otorga una gran experiencia. A lo largo de los años ha explorado no solo técnicas sino la capacidad de transmitir emociones a través de sus obras.</p>
                     <p>Inspira su obra: La naturaleza, especialmente paisajes</p>  
                     <p>Influencias: Monet y Van Gogh.</p>
@@ -181,7 +176,7 @@
                     <figure>
                             <img src="https://images.unsplash.com/photo-1752649936912-fe4c451a1d65?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Evelyn mirando la obra que pinta su alumna sobre lienzo en una de las clases particulares que dicta.">
                     </figure>
-                    <button class="button service-cta button-agenda" type="button" id="open-agenda">Agendar clase</button>
+                    <label class="button service-cta button-agenda" for="agenda-toggle-checkbox">Agendar clase</label>
                 </article>
                 <article class="service-card">
                     <h3>Presentaciones y ferias</h3>
@@ -193,14 +188,16 @@
             </div>
         </section>
 
-        <div id="agenda-overlay" class="agenda-overlay" aria-hidden="true">
+        <input class="agenda-toggle-checkbox" type="checkbox" id="agenda-toggle-checkbox" aria-hidden="true">
+        <div class="agenda-overlay">
+            <label class="agenda-overlay-close" for="agenda-toggle-checkbox" aria-label="Cerrar agenda"></label>
             <div class="agenda-modal" role="dialog" aria-modal="true" aria-labelledby="agenda-title">
-                <button id="close-agenda" class="agenda-close" type="button" aria-label="Cerrar agenda">x</button>
+                <label class="agenda-close" for="agenda-toggle-checkbox" aria-label="Cerrar agenda">x</label>
                 <h3 id="agenda-title">Agendar clase</h3>
                 <p>Selecciona una fecha para coordinar tu clase de arte.</p>
                 <label for="agenda-date">Fecha de clase</label>
                 <input id="agenda-date" type="date" required>
-                <button id="confirm-agenda" class="button agenda-confirm" type="button">Confirmar agenda</button>
+                <label class="button agenda-confirm" for="agenda-toggle-checkbox">Confirmar agenda</label>
             </div>
         </div>
 
@@ -332,181 +329,6 @@
         <a href="mailto:evelynbarbozaart@gmail.com">Correo Electrónico</a>
         <address>Montevideo, Uruguay</address>
     </footer>
-    <button id="back-to-top" class="back-to-top" type="button" aria-label="Volver al inicio">↑</button>
-    <script>
-        (function () {
-            var nav = document.querySelector('.site-nav');
-            var toggle = document.querySelector('.menu-toggle');
-            var menu = document.getElementById('primary-menu');
-            var brandLink = document.querySelector('.brand-initials');
-            var faqItems = document.querySelectorAll('.faq-list .faq-item');
-            var backToTop = document.getElementById('back-to-top');
-            var openAgenda = document.getElementById('open-agenda');
-            var agendaOverlay = document.getElementById('agenda-overlay');
-            var closeAgenda = document.getElementById('close-agenda');
-            var agendaDate = document.getElementById('agenda-date');
-            var confirmAgenda = document.getElementById('confirm-agenda');
-            var desktopQuery = window.matchMedia('(min-width: 981px)');
-
-            if (!nav || !toggle || !menu) {
-                return;
-            }
-
-            function closeMenu() {
-                nav.classList.remove('is-open');
-                toggle.setAttribute('aria-expanded', 'false');
-            }
-
-            function syncDesktopState(event) {
-                if (event.matches) {
-                    nav.classList.add('is-desktop');
-                    closeMenu();
-                } else {
-                    nav.classList.remove('is-desktop');
-                }
-            }
-
-            toggle.addEventListener('click', function () {
-                var isOpen = nav.classList.toggle('is-open');
-                toggle.setAttribute('aria-expanded', String(isOpen));
-            });
-
-            menu.querySelectorAll('a').forEach(function (link) {
-                link.addEventListener('click', function () {
-                    if (!nav.classList.contains('is-desktop')) {
-                        closeMenu();
-                    }
-                });
-            });
-
-            if (brandLink) {
-                brandLink.addEventListener('click', function () {
-                    if (!nav.classList.contains('is-desktop')) {
-                        closeMenu();
-                    }
-                });
-            }
-
-            faqItems.forEach(function (item) {
-                item.addEventListener('toggle', function () {
-                    if (!item.open) {
-                        return;
-                    }
-
-                    faqItems.forEach(function (other) {
-                        if (other !== item) {
-                            other.open = false;
-                        }
-                    });
-                });
-            });
-
-            function syncBackToTopVisibility() {
-                if (!backToTop) {
-                    return;
-                }
-
-                if (window.scrollY > 280) {
-                    backToTop.classList.add('is-visible');
-                } else {
-                    backToTop.classList.remove('is-visible');
-                }
-            }
-
-            function syncNavTransparency() {
-                if (window.scrollY > 12) {
-                    nav.classList.add('is-scrolled');
-                } else {
-                    nav.classList.remove('is-scrolled');
-                }
-            }
-
-            if (backToTop) {
-                backToTop.addEventListener('click', function () {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
-            }
-
-            function closeAgendaModal() {
-                if (!agendaOverlay) {
-                    return;
-                }
-
-                agendaOverlay.classList.remove('is-open');
-                agendaOverlay.setAttribute('aria-hidden', 'true');
-                document.body.classList.remove('modal-open');
-            }
-
-            function openAgendaModal() {
-                if (!agendaOverlay) {
-                    return;
-                }
-
-                agendaOverlay.classList.add('is-open');
-                agendaOverlay.setAttribute('aria-hidden', 'false');
-                document.body.classList.add('modal-open');
-                if (agendaDate) {
-                    agendaDate.focus();
-                }
-            }
-
-            if (agendaDate) {
-                agendaDate.min = new Date().toISOString().split('T')[0];
-            }
-
-            if (openAgenda) {
-                openAgenda.addEventListener('click', openAgendaModal);
-            }
-
-            if (closeAgenda) {
-                closeAgenda.addEventListener('click', closeAgendaModal);
-            }
-
-            if (agendaOverlay) {
-                agendaOverlay.addEventListener('click', function (event) {
-                    if (event.target === agendaOverlay) {
-                        closeAgendaModal();
-                    }
-                });
-            }
-
-            if (confirmAgenda) {
-                confirmAgenda.addEventListener('click', function () {
-                    if (!agendaDate || !agendaDate.value) {
-                        if (agendaDate) {
-                            agendaDate.reportValidity();
-                        }
-                        return;
-                    }
-
-                    closeAgendaModal();
-                });
-            }
-
-            document.addEventListener('keydown', function (event) {
-                if (event.key === 'Escape') {
-                    closeAgendaModal();
-                }
-            });
-
-            document.addEventListener('click', function (event) {
-                if (!nav.contains(event.target) && !nav.classList.contains('is-desktop')) {
-                    closeMenu();
-                }
-            });
-
-            syncDesktopState(desktopQuery);
-            syncBackToTopVisibility();
-            syncNavTransparency();
-            desktopQuery.addEventListener('change', syncDesktopState);
-            window.addEventListener('scroll', function () {
-                syncBackToTopVisibility();
-                syncNavTransparency();
-            }, { passive: true });
-        })();
-    </script>
+    <a class="back-to-top" href="#inicio" aria-label="Volver al inicio">↑</a>
 </body>
 </html>
