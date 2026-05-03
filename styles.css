@@ -22,6 +22,7 @@
 html {
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
+    scroll-padding-top: var(--nav-offset);
 }
 
 body {
@@ -186,7 +187,6 @@ a {
     max-width: none;
     margin: 0;
     scroll-snap-align: start;
-    scroll-snap-stop: always;
 }
 
 .site-header .hero.full-height {
@@ -289,7 +289,7 @@ a {
 
 
 main {
-    padding-top: var(--nav-offset);
+    padding-top: 0;
     position: relative;
 }
 
@@ -317,21 +317,15 @@ main::before {
 
 .section {
     width: 100%;
-    padding: 6rem 0 4rem;
+    padding: clamp(2rem, 5vh, 6rem) 0 clamp(1.25rem, 3.2vh, 4rem);
     max-width: min(1200px, calc(100vw - 6rem));
     margin: 0 auto;
     scroll-snap-align: start;
-    scroll-snap-stop: always;
 }
 
 .section-header {
     margin-bottom: 2rem;
-    /* background: rgba(255, 253, 248, 0.5); */
-    /* backdrop-filter: blur(10px); */
-    /* border: 1px solid rgba(106, 63, 36, 0.1); */
-    /* border-radius: var(--radius); */
-    padding: 1rem 1.2rem;
-    /* box-shadow: 0 10px 18px rgba(38, 51, 40, 0.05); */
+    padding: 0rem 1.2rem;
 }
 
 .section-header h2 {
@@ -654,6 +648,21 @@ main::before {
     box-shadow: 0 10px 20px rgba(38, 51, 40, 0.05);
 }
 
+.service-card figure {
+    margin: 1rem auto 0;
+    width: min(100%, 340px);
+    aspect-ratio: 4 / 3;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 24px rgba(38, 51, 40, 0.12);
+}
+
+.service-card figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .service-cta {
     margin: 1rem auto 0;
 }
@@ -773,10 +782,48 @@ main::before {
 .event-item {
     background: rgba(255, 253, 248, 0.5);
     backdrop-filter: blur(10px);
-    /* border: 1px solid rgba(106, 63, 36, 0.1); */
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(220px, 28vw, 340px);
+    align-items: center;
+    gap: 1.4rem;
     border-radius: var(--radius);
     padding: 1.8rem;
-    /* box-shadow: 0 10px 20px rgba(38, 51, 40, 0.05); */
+}
+
+.event-content {
+    align-self: center;
+}
+
+.event-content h3 {
+    margin-top: 0;
+}
+
+.event-content p,
+.event-content ul {
+    margin: 0 0 0.85rem;
+}
+
+.event-content p:last-child,
+.event-content ul:last-child {
+    margin-bottom: 0;
+}
+
+.event-media {
+    margin: 0;
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+    max-width: 340px;
+    aspect-ratio: 4 / 3;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 24px rgba(38, 51, 40, 0.12);
+}
+
+.event-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .faq-list {
@@ -1067,7 +1114,7 @@ main::before {
     }
 
     .section {
-        padding: 5rem 0 3rem;
+        padding: clamp(1.4rem, 3.5vh, 3rem) 0 clamp(1rem, 2.8vh, 2rem);
         max-width: min(100%, calc(100vw - 2.25rem));
     }
 
@@ -1136,6 +1183,15 @@ main::before {
 
     .faq-list {
         width: 100%;
+    }
+
+    .event-item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .event-media {
+        max-width: min(100%, 30rem);
     }
 
     .faq-item summary {
